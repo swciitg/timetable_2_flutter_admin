@@ -1,2 +1,1 @@
-# timetable_2_admin
-The idea is to make a time-table that is editable by all students, and only let the BR approve changes.
+![timetable_2_flutter_admin](https://socialify.git.ci/swciitg/timetable_2_flutter_admin/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Light)
