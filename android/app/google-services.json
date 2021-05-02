@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "756295375506",
+    "project_id": "timetable-2-flutter-admin",
+    "storage_bucket": "timetable-2-flutter-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756295375506:android:0d9820c56f3860d7cde44b",
+        "android_client_info": {
+          "package_name": "com.example.timetable_2_flutter_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756295375506-mfqkd8fhjhi7nrc2j0at4um5m2fasbhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtF7xKw-zo8PWegiLlSz9yCsU-OMSQwvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756295375506-mfqkd8fhjhi7nrc2j0at4um5m2fasbhv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "756295375506-lvuqs02bj2qvm15u05mlt6h5sm1rg6o1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.timetable2FlutterAdmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
