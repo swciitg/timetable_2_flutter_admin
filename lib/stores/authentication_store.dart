@@ -48,6 +48,7 @@ abstract class AuthenticationStoreBase with Store {
 
   @action
   Future<void> signInWithMicrosoft(BuildContext context) async {
+    Navigator.of(context).pushNamed('/powerup');
     oauth.setWebViewScreenSize(Rect.fromLTWH(
         0,
         25,
