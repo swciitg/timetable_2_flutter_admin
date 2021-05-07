@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp(
+              debugShowCheckedModeBanner: false,
               title: 'Timetable Admin',
               initialRoute: '/',
               routes: {
@@ -46,9 +47,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light(),
-          home: Material(
-            color: Colors.white,
-          ),
+          home: PowerUp(),
         );
       },
     );

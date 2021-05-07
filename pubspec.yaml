@@ -76,6 +76,8 @@ flutter:
           weight: 500
         - asset: assets/fonts/Montserrat-Light.ttf
           weight: 300
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 800
 
   #   - family: Trajan Pro
   #     fonts:
