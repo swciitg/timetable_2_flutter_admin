@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:timetable_2_flutter_admin/pages/homepage.dart';
 import 'package:timetable_2_flutter_admin/pages/loginpage.dart';
+import 'package:timetable_2_flutter_admin/pages/power_up.dart';
 import 'package:timetable_2_flutter_admin/pages/splashpage.dart';
 import 'package:timetable_2_flutter_admin/stores/authentication_store.dart';
 
@@ -31,12 +32,14 @@ class MyApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp(
+              debugShowCheckedModeBanner: false,
               title: 'Timetable Admin',
               initialRoute: '/',
               routes: {
                 '/': (context) => SplashPage(),
                 '/approval': (context) => HomePage(),
                 '/login': (context) => LoginPage(),
+                '/powerup': (context) => PowerUp(),
               },
             ),
           );
@@ -44,9 +47,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light(),
-          home: Material(
-            color: Colors.white,
-          ),
+          home: PowerUp(),
         );
       },
     );
