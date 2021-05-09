@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
+import 'package:timetable_2_flutter_admin/widgets/appBar.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    print(SizeConfig.screenHeight);
+    print('Vertical Blocks = ${SizeConfig.verticalBlockSize}');
+    print(40 / SizeConfig.verticalBlockSize);
     return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: TextSpan(
-              text: 'timetable',
-              style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w800,
-                  fontSize: 30),
-              children: [
-                TextSpan(
-                    text: '.',
-                    style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w800,
-                        color: Colors.yellow,
-                        fontSize: 40))
-              ]),
-        ),
-      ),
+      appBar: appBar(),
       body: Center(
         child: Text('Approval Page'),
       ),
