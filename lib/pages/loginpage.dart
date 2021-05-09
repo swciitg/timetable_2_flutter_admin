@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
+import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 import 'package:timetable_2_flutter_admin/stores/authentication_store.dart';
 
@@ -11,11 +12,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //double _paddingMultiplier = 0.0486;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    double paddingWidth = 4.86 * SizeConfig.horizontalBlockSize;
     return Consumer<AuthenticationStore>(
       builder: (_, loginStore, __) {
         return Scaffold(
@@ -38,8 +37,8 @@ class _LoginPageState extends State<LoginPage> {
                           bottom: false,
                           top: true,
                           child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: paddingWidth),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySpaces.horizontalScreenPadding),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -83,7 +82,8 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: paddingWidth),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MySpaces.horizontalScreenPadding),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
