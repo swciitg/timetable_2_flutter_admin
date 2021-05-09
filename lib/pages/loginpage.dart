@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:timetable_2_flutter_admin/globals/myColors.dart';
+import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
+import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 import 'package:timetable_2_flutter_admin/stores/authentication_store.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,8 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   //double _paddingMultiplier = 0.0486;
   @override
   Widget build(BuildContext context) {
-    double paddingWidth = 0.0486 * MediaQuery.of(context).size.width;
-    print(MediaQuery.of(context).size.width);
+    SizeConfig().init(context);
+    double paddingWidth = 4.86 * SizeConfig.horizontalBlockSize;
     return Consumer<AuthenticationStore>(
       builder: (_, loginStore, __) {
         return Scaffold(
@@ -50,24 +53,12 @@ class _LoginPageState extends State<LoginPage> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            'Timetable',
-                                            style: TextStyle(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.white,
-                                              fontSize: 55,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Admin',
-                                            style: TextStyle(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.yellow[600],
-                                              fontSize: 55,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
+                                          Text('Timetable',
+                                              style: MyFonts.medium
+                                                  .setColor(kWhite)),
+                                          Text('Admin',
+                                              style: MyFonts.medium
+                                                  .setColor(kYellow)),
                                         ],
                                       )),
                                 ),
@@ -105,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         flex: 2,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.yellow[600],
+                              primary: kYellow,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
                           onPressed: () {
@@ -115,12 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               'LOGIN WITH OUTLOOK',
-                              style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                color: Colors.black,
-                                fontSize: 50,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style:
+                                  MyFonts.medium.factor(3.66).setColor(kBlack),
                             ),
                           ),
                         ),
