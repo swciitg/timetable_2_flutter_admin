@@ -28,8 +28,16 @@ AppBar appBar() {
     elevation: 0.0,
     bottom: TabBar(
       tabs: [
-        Tab(icon: Text('Push Requests')),
-        Tab(icon: Text('My Department')),
+        Tab(
+            icon: Text(
+          'Push Requests',
+          style: MyFonts.medium,
+        )),
+        Tab(
+            icon: Text(
+          'My Department',
+          style: MyFonts.medium,
+        )),
       ],
     ),
   );

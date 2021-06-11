@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
+import 'package:timetable_2_flutter_admin/stores/prDatabase.dart';
 import 'package:timetable_2_flutter_admin/widgets/myListTile.dart';
 
 class PushRequest extends StatefulWidget {
@@ -13,27 +15,64 @@ class _PushRequestState extends State<PushRequest> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: ListView.separated(
-          itemCount: testData.length + 2,
-          separatorBuilder: (context, _) => SizedBox(
-            height: 10,
-          ),
-          itemBuilder: (context, index) {
-            if (index == 0 || index == (testData.length + 1)) {
-              return Container();
-            }
-            Map<String, String> item = testData[index - 1];
-            return MyListTile(
-                title: item['title'],
-                type: item['type'],
-                duration: item['day'],
-                time: item['time'],
-                email: item['email'],
-                status: item['status']);
-          },
-        ),
+        child: Provider(create: (_) => PRDatabase(), child: PushRequestList()),
       ),
     );
+  }
+}
+
+class PushRequestList extends StatefulWidget {
+  const PushRequestList({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _PushRequestListState createState() => _PushRequestListState();
+}
+
+class _PushRequestListState extends State<PushRequestList> {
+  @override
+  Widget build(BuildContext context) {
+    print('Building');
+    return StreamBuilder<List<List<Map<String, dynamic>>>>(
+        initialData: null,
+        stream: context.read<PRDatabase>().combinedStream,
+        builder: (BuildContext context,
+            AsyncSnapshot<List<List<Map<String, dynamic>>>> snapshot) {
+          if (snapshot.hasError) {
+            return Text('There was an error.');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting ||
+              snapshot.data == null) {
+            return CircularProgressIndicator();
+          }
+          List<MyListTile> tiles = [];
+
+          for (int i = 0; i < snapshot.data.length; i++) {
+            snapshot.data.elementAt(i).forEach((element) {
+              tiles.add(MyListTile(
+                  title: (element['Code']),
+                  type: (element['Type']),
+                  duration: "3 hour",
+                  time: "9 am",
+                  email: "john@smith.com",
+                  status: "add"));
+            });
+          }
+
+          return ListView.separated(
+            itemCount: tiles.length + 2,
+            separatorBuilder: (context, _) => SizedBox(
+              height: 10,
+            ),
+            itemBuilder: (context, index) {
+              if (index == 0 || index == (tiles.length + 1)) {
+                return Container();
+              }
+              return tiles[index - 1];
+            },
+          );
+        });
   }
 }
 

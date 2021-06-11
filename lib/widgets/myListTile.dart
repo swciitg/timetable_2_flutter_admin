@@ -58,6 +58,7 @@ class MyListTile extends StatelessWidget {
       // When the user taps the button, show a dialog box.
       onTap: () {
         showModalBottomSheet(
+            barrierColor: Colors.transparent,
             isScrollControlled: true,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
