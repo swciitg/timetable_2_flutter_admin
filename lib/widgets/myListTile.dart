@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
-import 'package:timetable_2_flutter_admin/widgets/PopUp.dart';
+import 'package:timetable_2_flutter_admin/widgets/popUp.dart';
 import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 import '../globals/myColors.dart';
 
