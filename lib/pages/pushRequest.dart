@@ -113,7 +113,7 @@ List<Map<String, String>> testData = [
     "title": "HSS 123",
     "type": "Quiz",
     "time": "2 pm",
-    "day": "3 hour",
+    "day": "Wednesday",
     "email": "gandhi18@iitg.ac.in",
     "status": "add"
   },
