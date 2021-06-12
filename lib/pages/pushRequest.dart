@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:timetable_2_flutter_admin/stores/prDatabase.dart';
 import 'package:timetable_2_flutter_admin/widgets/myListTile.dart';
@@ -56,7 +55,8 @@ class _PushRequestListState extends State<PushRequestList> {
                   duration: "3 hour",
                   time: "9 am",
                   email: "john@smith.com",
-                  status: "add"));
+                  status: (element['Action']),
+                  ));
             });
           }
 
@@ -113,7 +113,7 @@ List<Map<String, String>> testData = [
     "title": "HSS 123",
     "type": "Quiz",
     "time": "2 pm",
-    "day": "3 hour",
+    "day": "Wednesday",
     "email": "gandhi18@iitg.ac.in",
     "status": "add"
   },
