@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:timetable_2_flutter_admin/stores/prDatabase.dart';
 import 'package:timetable_2_flutter_admin/widgets/myListTile.dart';
