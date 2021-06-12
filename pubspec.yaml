@@ -35,7 +35,7 @@ dependencies:
   provider: 
   mobx:
   flutter_mobx:
-  flutter_slidable: ^0.6.0
+  flutter_slidable: 
   cloud_firestore:
   stream_transform: ^2.0.0
 
