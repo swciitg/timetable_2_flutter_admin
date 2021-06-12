@@ -55,7 +55,8 @@ class _PushRequestListState extends State<PushRequestList> {
                   duration: "3 hour",
                   time: "9 am",
                   email: "john@smith.com",
-                  status: "add"));
+                  status: (element['Action']),
+                  ));
             });
           }
 
@@ -112,7 +113,7 @@ List<Map<String, String>> testData = [
     "title": "HSS 123",
     "type": "Quiz",
     "time": "2 pm",
-    "day": "Wednesday",
+    "day": "3 hour",
     "email": "gandhi18@iitg.ac.in",
     "status": "add"
   },
