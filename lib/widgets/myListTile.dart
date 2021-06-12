@@ -5,13 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
-import 'package:timetable_2_flutter_admin/widgets/Pop_up_dialog.dart';
+import 'package:timetable_2_flutter_admin/widgets/PopUp.dart';
 import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
+import '../globals/myColors.dart';
 
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
 
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
