@@ -84,10 +84,17 @@ class PRDatabase {
       for (QueryDocumentSnapshot doc in snapshot.docs) {
         if (doc.data() != null) {
           Map<String, dynamic> map = doc.data(); //as Map<String, dynamic>;
+          map['Platform'] ??= " ";
+          map['User'] ??= " ";
+          map['User'] ??= "Unknown User";
+          map['Date Added'] ??= "Today";
           map['Type'] = type;
           map['ID'] = doc.id;
           if (type == "Class" || type == "Lab") {
             map['Time'] = classTime(map['Slots']);
+          } else if (type == "Assignment") {
+            map['Time'] = findTime(map['Deadline']);
+            map['Duration'] = map['Deadline'];
           } else {
             map['Time'] = findTime(map['Time']);
           }
