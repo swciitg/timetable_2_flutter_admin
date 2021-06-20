@@ -13,27 +13,14 @@ import '../globals/myColors.dart';
 
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
-  String title;
-  String time;
-  String duration;
-  String type;
-  String email;
-  String status;
-  Map<String, dynamic> data;
+  final Map<String, dynamic> data;
   Color sideColor;
   Color text;
   Color bgColor;
 
+  DateTime get time => data['Time']['Timestamp'];
+
   MyListTile({this.data}) {
-    data['Platform'] ??= "Unspecified Platform";
-    data['User'] ??= "Unknown User";
-    data['Date Added'] ??= "Today";
-    title = data['Code'];
-    time = data['Time']['Time'];
-    duration = data['Duration'] ?? "-";
-    email = "Email";
-    status = data['Action'];
-    type = data['Type'];
     switch (data['Type']) {
       case 'Assignment':
         sideColor = kBlack;
@@ -93,7 +80,7 @@ class MyListTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            '$title',
+                            '${data['Code']}',
                             style: MyFonts.extraBold.size(25),
                           ),
                           SizedBox(
@@ -110,7 +97,7 @@ class MyListTile extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               child: Text(
-                                '$status',
+                                '${data['Action']}',
                                 style: MyFonts.medium.setColor(text).size(10),
                               ),
                             ),
@@ -120,17 +107,33 @@ class MyListTile extends StatelessWidget {
                     ),
                     Expanded(
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '$type, ${data['Time']['Date']}',
-                              overflow: TextOverflow.fade,
-                              softWrap: false,
-                              style: MyFonts.medium.setColor(kGrey).size(15),
-                            ),
-                          ),
+                          Wrap(
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              spacing: 5,
+                              children: [
+                                Text(
+                                  ' ${data['Type']}',
+                                  overflow: TextOverflow.fade,
+                                  softWrap: true,
+                                  style:
+                                      MyFonts.medium.setColor(kGrey).size(15),
+                                ),
+                                Icon(
+                                  Icons.brightness_1,
+                                  size: 6,
+                                  color: kBlue,
+                                ),
+                                Text(
+                                  '${data['Platform']}',
+                                  overflow: TextOverflow.fade,
+                                  softWrap: false,
+                                  style:
+                                      MyFonts.medium.setColor(kGrey).size(15),
+                                ),
+                              ])
                         ],
                       ),
                     ),
@@ -145,7 +148,7 @@ class MyListTile extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(
-                          '$time',
+                          '${data['Time']['Time']}',
                           style: MyFonts.extraBold.size(20),
                         ),
                       ),
@@ -154,7 +157,7 @@ class MyListTile extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(
-                          '$duration',
+                          '${data['Duration']}',
                           style: MyFonts.medium.size(15),
                         ),
                       ),
@@ -163,7 +166,7 @@ class MyListTile extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(
-                          '$email',
+                          '${data['User']}',
                           style: MyFonts.medium.setColor(kGrey).size(10),
                         ),
                       ),
