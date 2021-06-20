@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Timetable Admin',
+              theme: ThemeData(fontFamily: 'Montserrat'),
               initialRoute: '/',
               routes: {
                 '/': (context) => SplashPage(),

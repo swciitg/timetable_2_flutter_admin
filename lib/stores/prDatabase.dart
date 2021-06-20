@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stream_transform/stream_transform.dart';
+import 'package:timetable_2_flutter_admin/functions/findTime.dart';
 
 class PRDatabase {
   FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -85,7 +86,11 @@ class PRDatabase {
           Map<String, dynamic> map = doc.data(); //as Map<String, dynamic>;
           map['Type'] = type;
           map['ID'] = doc.id;
-          // print(map);
+          if (type == "Class" || type == "Lab") {
+            map['Time'] = classTime(map['Slots']);
+          } else {
+            map['Time'] = findTime(map['Time']);
+          }
           list.add(map);
         }
       }
@@ -117,5 +122,9 @@ class PRDatabase {
         .collection(type)
         .doc(docID)
         .update({'Status': 'Rejected'});
+  }
+
+  void printTest() {
+    print("Printing from DB");
   }
 }
