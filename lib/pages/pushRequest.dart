@@ -50,13 +50,8 @@ class _PushRequestListState extends State<PushRequestList> {
           for (int i = 0; i < snapshot.data.length; i++) {
             snapshot.data.elementAt(i).forEach((element) {
               tiles.add(MyListTile(
-                  title: (element['Code']),
-                  type: (element['Type']),
-                  duration: "3 hour",
-                  time: "9 am",
-                  email: "john@smith.com",
-                  status: (element['Action']),
-                  ));
+                data: element,
+              ));
             });
           }
 
