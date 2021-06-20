@@ -16,7 +16,7 @@ abstract class AuthenticationStoreBase with Store {
   static final Config config = new Config(
       tenant: '850aa78d-94e1-4bc6-9cf3-8c11b530701c',
       clientId: '81f3e9f0-b0fd-48e0-9d36-e6058e5c6d4f',
-      scope: "openid profile offline_access",
+      scope: "user.read openid profile offline_access",
       redirectUri: "https://login.live.com/oauth20_desktop.srf");
   final AadOAuth oauth = new AadOAuth(config);
 

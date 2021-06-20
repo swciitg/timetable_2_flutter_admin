@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
+import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 import 'package:timetable_2_flutter_admin/stores/prDatabase.dart';
 import 'package:timetable_2_flutter_admin/widgets/myListTile.dart';
 
@@ -13,7 +16,8 @@ class _PushRequestState extends State<PushRequest> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        padding:
+            EdgeInsets.symmetric(horizontal: MySpaces.horizontalScreenPadding),
         child: Provider(create: (_) => PRDatabase(), child: PushRequestList()),
       ),
     );
@@ -45,7 +49,7 @@ class _PushRequestListState extends State<PushRequestList> {
               snapshot.data == null) {
             return CircularProgressIndicator();
           }
-          List<MyListTile> tiles = [];
+          List<Widget> tiles = [];
 
           for (int i = 0; i < snapshot.data.length; i++) {
             snapshot.data.elementAt(i).forEach((element) {
@@ -54,7 +58,23 @@ class _PushRequestListState extends State<PushRequestList> {
               ));
             });
           }
-
+          tiles.sort((a, b) =>
+              (a as MyListTile).time.compareTo((b as MyListTile).time));
+          DateTime header;
+          for (int i = 0; i < tiles.length; i++) {
+            if (header != (tiles[i] as MyListTile).time) {
+              String heading =
+                  DateFormat('d MMMM y').format((tiles[i] as MyListTile).time);
+              print("Heading = $heading");
+              header = (tiles[i] as MyListTile).time;
+              tiles.insert(
+                  i,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text('$heading', style: MyFonts.extraBold.size(20)),
+                  ));
+            }
+          }
           return ListView.separated(
             itemCount: tiles.length + 2,
             separatorBuilder: (context, _) => SizedBox(

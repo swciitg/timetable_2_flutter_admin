@@ -65,7 +65,7 @@ class DetailsDisplay extends StatelessWidget {
                         ],
                       ),
                     ),
-                    ClassSlots(slots: data['Slots']),
+                    TimeSlots(data: this.data),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: Row(
@@ -126,22 +126,27 @@ class DetailsDisplay extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                ElevatedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Text("Commit Change"),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 2 * MySpaces.horizontalScreenPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ElevatedButton(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      child: Text("Commit Change"),
+                    ),
+                    onPressed: () {
+                      db.approveChange(data['ID'], data['Type']);
+                      Navigator.of(context).pop();
+                    },
+                    style:
+                        ElevatedButton.styleFrom(primary: kBlue, elevation: 0),
                   ),
-                  onPressed: () {
-                    db.approveChange(data['ID'], data['Type']);
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(primary: kBlue, elevation: 0),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -151,7 +156,7 @@ class DetailsDisplay extends StatelessWidget {
 }
 
 class ClassSlots extends StatelessWidget {
-  List<dynamic> slots;
+  final List<dynamic> slots;
   ClassSlots({this.slots});
 
   @override
@@ -199,5 +204,63 @@ class ClassSlots extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: classSlots,
     );
+  }
+}
+
+class TimeTiles extends StatelessWidget {
+  final Map<String, dynamic> time;
+  final String header;
+  const TimeTiles({this.time, this.header = "On"});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: Container(
+          height: 70,
+          decoration: BoxDecoration(
+              color: lBlue, borderRadius: BorderRadius.circular(5)),
+          child: Row(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Text(
+                    '$header',
+                    textAlign: TextAlign.center,
+                  )),
+              Container(
+                width: 2,
+                height: 65,
+                color: Colors.grey[700],
+              ),
+              Expanded(
+                  flex: 4,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text('${time['Time']} , ${time['Date']}'),
+                    ],
+                  ))
+            ],
+          )),
+    );
+  }
+}
+
+class TimeSlots extends StatelessWidget {
+  final Map<String, dynamic> data;
+  const TimeSlots({this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    if (data['Type'] == "Class" || data['Type'] == "Lab") {
+      return ClassSlots(slots: data['Slots']);
+    }
+    if (data['Type'] == "Assignment") {
+      return TimeTiles(time: data['Time'], header: "Due on");
+    }
+    return TimeTiles(time: data['Time']);
   }
 }
