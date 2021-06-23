@@ -6,6 +6,10 @@ import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 import 'package:timetable_2_flutter_admin/stores/prDatabase.dart';
 
+import '../globals/myColors.dart';
+import '../globals/myFonts.dart';
+import '../globals/myFonts.dart';
+
 class DetailsDisplay extends StatelessWidget {
   final Map<String, dynamic> data;
   final PRDatabase db;
@@ -41,7 +45,10 @@ class DetailsDisplay extends StatelessWidget {
                             flex: 1,
                           ),
                           Expanded(
-                            child: Text('Course Code'),
+                            child: Text(
+                                'Course Code',
+                                style:MyFonts.light,
+                            ),
                             flex: 2,
                           ),
                           Expanded(
@@ -71,20 +78,24 @@ class DetailsDisplay extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(flex: 1, child: Icon(Icons.tag)),
-                          Expanded(flex: 1, child: Text('tags')),
+                          Expanded(flex: 1, child: Text('tags',style:MyFonts.light)),
                           Expanded(
                             flex: 3,
                             child: Wrap(
                               spacing: 10,
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: [
-                                Text('${data['Type']}'),
+                                Text('${data['Type']}',
+                                  style:MyFonts.medium,
+                                ),
                                 Icon(
                                   Icons.brightness_1,
                                   size: 6,
                                   color: kBlue,
                                 ),
-                                Text('${data['Platform']}')
+                                Text('${data['Platform']}',
+                                  style:MyFonts.medium,
+                                )
                               ],
                             ),
                           )
@@ -96,10 +107,13 @@ class DetailsDisplay extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(flex: 1, child: Icon(Icons.person_pin)),
-                          Expanded(flex: 1, child: Text('User')),
+                          Expanded(flex: 1, child: Text('User',style:MyFonts.light,
+                          )),
                           Expanded(
                             flex: 3,
-                            child: Text('${data['User']}'),
+                            child: Text('${data['User']}',
+                              style:MyFonts.medium,
+                            ),
                           )
                         ],
                       ),
@@ -111,10 +125,12 @@ class DetailsDisplay extends StatelessWidget {
                           Expanded(
                               flex: 2,
                               child: Icon(Icons.calendar_today_outlined)),
-                          Expanded(flex: 3, child: Text('Date Added')),
+                          Expanded(flex: 3, child: Text('Date Added',
+                            style:MyFonts.light,
+                          )),
                           Expanded(
                             flex: 5,
-                            child: Text("${data['Date Added']}"),
+                            child: Text("${data['Date Added']}",style:MyFonts.medium,),
                           )
                         ],
                       ),
@@ -136,7 +152,9 @@ class DetailsDisplay extends StatelessWidget {
                   ElevatedButton(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: Text("Commit Change"),
+                      child: Text("Commit Change",
+                        style:MyFonts.medium,
+                      ),
                     ),
                     onPressed: () {
                       db.approveChange(data['ID'], data['Type']);
@@ -179,11 +197,12 @@ class ClassSlots extends StatelessWidget {
                     child: Text(
                       'Class',
                       textAlign: TextAlign.center,
+                      style:MyFonts.medium,
                     )),
                 Container(
                   width: 2,
                   height: 65,
-                  color: Colors.grey[700],
+                  color: kGrey,
                 ),
                 Expanded(
                     flex: 4,
@@ -192,7 +211,7 @@ class ClassSlots extends StatelessWidget {
                         SizedBox(
                           width: 15,
                         ),
-                        Text('${element['Time']} , ${element['Day']}'),
+                        Text('${element['Time']} , ${element['Day']}',style:MyFonts.bold,),
                       ],
                     ))
               ],
@@ -227,6 +246,7 @@ class TimeTiles extends StatelessWidget {
                   child: Text(
                     '$header',
                     textAlign: TextAlign.center,
+                    style:MyFonts.medium,
                   )),
               Container(
                 width: 2,
@@ -240,7 +260,7 @@ class TimeTiles extends StatelessWidget {
                       SizedBox(
                         width: 15,
                       ),
-                      Text('${time['Time']} , ${time['Date']}'),
+                      Text('${time['Time']} , ${time['Date']}',style:MyFonts.medium,),
                     ],
                   ))
             ],

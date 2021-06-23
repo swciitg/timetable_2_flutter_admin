@@ -47,7 +47,7 @@ class _PushRequestListState extends State<PushRequestList> {
           }
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
           List<Widget> tiles = [];
 
